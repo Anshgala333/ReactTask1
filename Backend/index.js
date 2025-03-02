@@ -5,8 +5,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import serverless from 'serverless-http';
 
-
-mongoose.connect('mongodb+srv://ansh:Ansh141879@cluster0.ylwmq.mongodb.net/test')
+mongoose.connect(`${process.env.DB_URL}`)
     .then(() => {
         console.log('Connected!')
     });
@@ -24,7 +23,8 @@ app.get("/getData", async (req, res) => {
     res.send(ans)
 })
 
-app.listen(9000)
+
+app.listen(process.env.PORT)
 
 // export const handler = serverless(app);
 
